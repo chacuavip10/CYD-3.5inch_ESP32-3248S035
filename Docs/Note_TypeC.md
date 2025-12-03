@@ -1,0 +1,3 @@
+- Batter charging IC: FM5324HJ1
+- Usefule link: https://macsbug.wordpress.com/2022/10/02/esp32-3248s035/ (U4 flash in Type C version is removed)
+- Upgrade ESP32 to ESP32N16R8: https://macsbug.wordpress.com/2025/10/23/modified-esp32-3248s035r-to-esp32-s3/
