@@ -10,4 +10,4 @@ This repo contains documents for Cheap Yellow Display 3.5inch type C version wit
 ![alt text](Factory_files/2-Specification/Back_typeC.jpg)
 
 ## GPIO Pinout
-![alt text](Docs/GPIO%20Pinout.png)
+![alt text](Docs/GPIO_PINOUT_TypeC.png)
