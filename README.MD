@@ -11,3 +11,21 @@ This repo contains documents for Cheap Yellow Display 3.5inch type C version wit
 
 ## GPIO Pinout
 ![alt text](Docs/GPIO_PINOUT_TypeC.png)
+
+### Add-ons
+
+[This page](https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display/blob/main/ADDONS.md) contains information about additional hardware add-ons that can add functionality to your CYD
+
+### Troubleshooting
+
+[This page](https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display/blob/main/TROUBLESHOOTING.md) contains information about how to troubleshoot your CYD device
+
+### Hardware Mods
+
+[This page](https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display/blob/main/Mods/README.md) contains information about some hardware mods that can be performed on the CYD to improve or change some of its functionality
+
+## License Info
+
+This project is licensed as MIT as per the [license file](/LICENSE)
+
+The one exception to this is the [Factory_files](/Factory_files/) folder, that I do not have the right to license
