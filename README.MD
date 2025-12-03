@@ -24,6 +24,9 @@ This repo contains documents for Cheap Yellow Display 3.5inch type C version wit
 
 [This page](https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display/blob/main/Mods/README.md) contains information about some hardware mods that can be performed on the CYD to improve or change some of its functionality
 
+### Hardware Mods - Change ESP32-WROOM to ESP32-S3-WROOM-1 N16R8
+[This page](https://macsbug.wordpress.com/2025/10/23/modified-esp32-3248s035r-to-esp32-s3/) contains information about replacing the ESP32 chip with more powerful ESP32-S3 with 8MB PSRAM & 16MB Flash
+
 ## License Info
 
 This project is licensed as MIT as per the [license file](/LICENSE)
