@@ -32,3 +32,5 @@ This repo contains documents for Cheap Yellow Display 3.5inch type C version wit
 This project is licensed as MIT as per the [license file](/LICENSE)
 
 The one exception to this is the [Factory_files](/Factory_files/) folder, that I do not have the right to license
+
+The PDF PCB layout (Docs/esp32-3248s035r_pcb_layout-5.pdf) from this link: https://macsbug.wordpress.com/2022/10/02/esp32-3248s035/
