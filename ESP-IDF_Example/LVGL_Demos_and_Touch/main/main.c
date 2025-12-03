@@ -162,8 +162,11 @@ void app_main(void)
     ESP_LOGI(TAG, "Turn off LCD backlight");
     gpio_config_t bk_gpio_config = {
         .mode = GPIO_MODE_OUTPUT,
-        .pin_bit_mask = 1ULL << PIN_NUM_BK_LIGHT};
+        .pin_bit_mask = (1ULL << PIN_NUM_BK_LIGHT) | (1ULL << 4) | (1ULL << 16) | (1ULL << 17)};
     ESP_ERROR_CHECK(gpio_config(&bk_gpio_config));
+    gpio_set_level(4, 1);
+    gpio_set_level(16, 1);
+    gpio_set_level(17, 1);
 
     ESP_LOGI(TAG, "Initialize SPI bus");
     spi_bus_config_t buscfg = {
