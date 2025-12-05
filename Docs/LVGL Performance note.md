@@ -1,4 +1,6 @@
 # Setting to consider
+## CYD Specific
+- On my CYD, i can set the SPI CLK Speed to maximum 80Mhz to get max performance. If you got corrupted display, lower the clk spd (80 > 60 > 40 > 20 > 10 Mhz)
 ## Flash: base on MCU
 Example: ESP32-WROOM-32 (ESP32N16R8 have QIO flash/psram, flash size 16MB)
 - Flash SPI mode: DIO --> `ESPTOOLPY_FLASHMODE`

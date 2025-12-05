@@ -1,6 +1,3 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C5 | ESP32-C6 | ESP32-C61 | ESP32-H2 | ESP32-H21 | ESP32-P4 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | --------- | -------- | --------- | -------- | -------- | -------- |
-
 # SPI LCD and Touch Panel Example
 
 [esp_lcd](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/lcd.html) provides several panel drivers out-of box, e.g. ST7789, SSD1306, NT35510. However, there're a lot of other panels on the market, it's beyond `esp_lcd` component's responsibility to include them all.
@@ -22,6 +19,7 @@ In this example you can enable touch controller XPT2046 connected via SPI. The S
 * An ESP development board
 * An CYD 3.5inch, with SPI interface (with/without XPT2046 SPI touch)
 * An USB cable for power supply and programming
+* **On my CYD, i can set the SPI CLK Speed to maximum 80Mhz to get max performance. If you got corrupted display, lower the clk spd (80 > 60 > 40 > 20 > 10 Mhz)**
 
 ### Hardware Connection
 
