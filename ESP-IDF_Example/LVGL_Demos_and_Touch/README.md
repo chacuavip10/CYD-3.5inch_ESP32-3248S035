@@ -1,10 +1,10 @@
 # SPI LCD and Touch Panel Example
 
-[esp_lcd](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/lcd.html) provides several panel drivers out-of box, e.g. ST7789, SSD1306, NT35510. However, there're a lot of other panels on the market, it's beyond `esp_lcd` component's responsibility to include them all.
+[esp_lcd](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/lcd.html) provides several panel drivers out-of box, e.g. ST7789, SSD1306, NT35510. However, there're a lot of other panels on the market, it's beyond `esp_lcd` component's responsibility to include them all. ST7796 driver is at [ESP_Registry](https://components.espressif.com/components/espressif/esp_lcd_st7796)
 
 `esp_lcd` allows user to add their own panel drivers in the project scope (i.e. panel driver can live outside of esp-idf), so that the upper layer code like LVGL porting code can be reused without any modifications, as long as user-implemented panel driver follows the interface defined in the `esp_lcd` component.
 
-This example shows how to use CYD 3.5inch ST7789 display driver from Component manager in esp-idf project. These components are using API provided by `esp_lcd` component. This example will use lv_demo_benchmark() to benchmark the system.
+This example shows how to use CYD 3.5inch ST7796 display driver from Component manager in esp-idf project. These components are using API provided by `esp_lcd` component. This example will use `lv_demo_benchmark()` to benchmark the system.
 
 This example uses the [esp_timer](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/esp_timer.html) to generate the ticks needed by LVGL and uses a dedicated task to run the `lv_timer_handler()`. Since the LVGL APIs are not thread-safe, this example uses a mutex which be invoked before the call of `lv_timer_handler()` and released after it. The same mutex needs to be used in other tasks and threads around every LVGL (lv_...) related function call and code. For more porting guides, please refer to [LVGL porting doc](https://docs.lvgl.io/master/porting/index.html).
 
