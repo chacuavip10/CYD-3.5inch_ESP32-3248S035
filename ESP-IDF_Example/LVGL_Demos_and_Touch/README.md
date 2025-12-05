@@ -62,6 +62,7 @@ Especially, please pay attention to the level used to turn on the LCD backlight,
 - LVGL fast memory Set IRAM as LV_ATTRIBUTE_FAST_MEM
 - Enable build demos & benchmark
 - Enable system monitor (FPS/Memory)
+
 [Also check this benchmark](../../Docs/LVGL%20Performance%20note.md)
 
 ### Build and Flash
