@@ -299,7 +299,7 @@ void app_main(void)
     // Lock the mutex due to the LVGL APIs are not thread-safe
     _lock_acquire(&lvgl_api_lock);
     lv_display_set_rotation(display, LV_DISPLAY_ROTATION_90);
-    // lv_demo_benchmark(); // Comment this if you want to use the demo from ESP-IDF SPI LCD and touch example
-    example_lvgl_demo_ui(display); // Uncomment this if you want to use the demo from ESP-IDF SPI LCD and touch example
+    lv_demo_benchmark(); // Comment this if you want to use the demo from ESP-IDF SPI LCD and touch example
+    // example_lvgl_demo_ui(display); // Uncomment this if you want to use the demo from ESP-IDF SPI LCD and touch example
     _lock_release(&lvgl_api_lock);
 }
