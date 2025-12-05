@@ -23,6 +23,7 @@ This example demonstrates the following:
 
 - CYD 3.5inch
 - Pinout: GPIO34 **(ADC1_CHANNEL6)**
+- On CYD 3.5inch, only available ADC-capable Pin is LDR (GPIO34) and  GPIO35 (ADC1_CH7) on external connector P3
 
 ### Build and Flash
 

@@ -15,8 +15,10 @@ const static char *TAG = "EXAMPLE";
 
 #define ADC_ATTEN ADC_ATTEN_DB_2_5
 
-static int adc_raw[10]; // array to save 10 result if need multi-sampling
-static int voltage[10];
+static int adc1_raw_channel6[10]; // array to save 10 result if need multi-sampling
+static int voltage_adc1_channel6[10];
+// static int adc1_raw_channel7[10];
+// static int voltage_adc1_channel7[10];
 static bool adc_calibration_init(adc_unit_t unit, adc_channel_t channel, adc_atten_t atten, adc_cali_handle_t *out_handle);
 static void adc_calibration_deinit(adc_cali_handle_t handle);
 
@@ -36,30 +38,46 @@ void app_main(void)
         .bitwidth = ADC_BITWIDTH_DEFAULT,
     };
     ESP_ERROR_CHECK(adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_6, &config));
+    // ESP_ERROR_CHECK(adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_7, &config));
 
     //-------------ADC1 Calibration Init---------------//
-    adc_cali_handle_t adc1_cali_chan0_handle = NULL;
-    bool do_calibration_adc1_chan6 = adc_calibration_init(ADC_UNIT_1, ADC_CHANNEL_6, ADC_ATTEN, &adc1_cali_chan0_handle);
+    adc_cali_handle_t adc1_cali_chan6_handle = NULL;
+    // adc_cali_handle_t adc1_cali_chan7_handle = NULL;
+    bool do_calibration_adc1_chan6 = adc_calibration_init(ADC_UNIT_1, ADC_CHANNEL_6, ADC_ATTEN, &adc1_cali_chan6_handle);
+    // bool do_calibration_adc1_chan7 = adc_calibration_init(ADC_UNIT_1, ADC_CHANNEL_7, ADC_ATTEN_DB_12, &adc1_cali_chan7_handle);
 
     vTaskDelay(pdMS_TO_TICKS(2000)); // Sleep to 2s
     while (1)
     {
-        ESP_ERROR_CHECK(adc_oneshot_read(adc1_handle, ADC_CHANNEL_6, &adc_raw[0]));
-        ESP_LOGI(TAG, "ADC%d Channel[%d] Raw Data: %d", ADC_UNIT_1 + 1, ADC_CHANNEL_6, adc_raw[0]);
+        ESP_ERROR_CHECK(adc_oneshot_read(adc1_handle, ADC_CHANNEL_6, &adc1_raw_channel6[0]));
+        ESP_LOGI(TAG, "ADC%d Channel[%d] Raw Data: %d", ADC_UNIT_1 + 1, ADC_CHANNEL_6, adc1_raw_channel6[0]);
         if (do_calibration_adc1_chan6)
         {
-            ESP_ERROR_CHECK(adc_cali_raw_to_voltage(adc1_cali_chan0_handle, adc_raw[0], &voltage[0]));
-            ESP_LOGI(TAG, "ADC%d Channel[%d] Cali Voltage: %d mV", ADC_UNIT_1 + 1, ADC_CHANNEL_6, voltage[0]);
+            ESP_ERROR_CHECK(adc_cali_raw_to_voltage(adc1_cali_chan6_handle, adc1_raw_channel6[0], &voltage_adc1_channel6[0]));
+            ESP_LOGI(TAG, "ADC%d Channel[%d] Cali Voltage: %d mV", ADC_UNIT_1 + 1, ADC_CHANNEL_6, voltage_adc1_channel6[0]);
         }
         vTaskDelay(pdMS_TO_TICKS(1000));
+
+        // ESP_ERROR_CHECK(adc_oneshot_read(adc1_handle, ADC_CHANNEL_7, &adc1_raw_channel7[0]));
+        // ESP_LOGI(TAG, "ADC%d Channel[%d] Raw Data: %d", ADC_UNIT_1 + 1, ADC_CHANNEL_7, adc1_raw_channel7[0]);
+        // if (do_calibration_adc1_chan7)
+        // {
+        //     ESP_ERROR_CHECK(adc_cali_raw_to_voltage(adc1_cali_chan7_handle, adc1_raw_channel7[0], &voltage_adc1_channel7[0]));
+        //     ESP_LOGI(TAG, "ADC%d Channel[%d] Cali Voltage: %d mV", ADC_UNIT_1 + 1, ADC_CHANNEL_7, voltage_adc1_channel7[0]);
+        // }
+        // vTaskDelay(pdMS_TO_TICKS(1000));
     }
 
     // Tear Down
     ESP_ERROR_CHECK(adc_oneshot_del_unit(adc1_handle));
     if (do_calibration_adc1_chan6)
     {
-        adc_calibration_deinit(adc1_cali_chan0_handle);
+        adc_calibration_deinit(adc1_cali_chan6_handle);
     }
+    // if (do_calibration_adc1_chan7)
+    // {
+    //     adc_calibration_deinit(adc1_cali_chan7_handle);
+    // }
 }
 
 /*---------------------------------------------------------------
