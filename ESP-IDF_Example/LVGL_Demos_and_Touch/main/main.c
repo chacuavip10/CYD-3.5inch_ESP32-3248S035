@@ -56,7 +56,7 @@ static const char *TAG = "example";
 // LVGL library is not thread-safe, this example will call LVGL APIs from different tasks, so use a mutex to protect it
 static _lock_t lvgl_api_lock;
 
-extern void lvgl_demo_ui(lv_disp_t *disp);
+extern void example_lvgl_demo_ui(lv_disp_t *disp);
 
 static bool notify_lvgl_flush_ready(esp_lcd_panel_io_handle_t panel_io, esp_lcd_panel_io_event_data_t *edata, void *user_ctx)
 {
@@ -299,6 +299,7 @@ void app_main(void)
     // Lock the mutex due to the LVGL APIs are not thread-safe
     _lock_acquire(&lvgl_api_lock);
     lv_display_set_rotation(display, LV_DISPLAY_ROTATION_90);
-    lv_demo_benchmark();
+    // lv_demo_benchmark(); // Comment this if you want to use the demo from ESP-IDF SPI LCD and touch example
+    example_lvgl_demo_ui(display); // Uncomment this if you want to use the demo from ESP-IDF SPI LCD and touch example
     _lock_release(&lvgl_api_lock);
 }
