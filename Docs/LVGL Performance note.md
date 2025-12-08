@@ -27,6 +27,7 @@ Increase LVGL Ram pool
 ### Affinity main task to second core
 The main LVGL task can be processed on the second core of the CPU. It can increase performance. (It is available only on dual-core chips) ==> Need check case by case
 - Main task core affinity: CPU1 --> `ESP_MAIN_TASK_AFFINITY`
+- Or in `main.c`, use `xTaskCreatePinnedToCore` to pin function contain `lv_timer_handler()` to core 1. Remember to increase stack size for complex UI to avoid stack overflow.
 ### String function source
 String functions source: Standard C memcpy/memset ...
 ### Reduce default display refresh, input device read and animation step period.
